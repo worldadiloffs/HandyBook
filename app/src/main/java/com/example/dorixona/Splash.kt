@@ -48,7 +48,7 @@ class Splash : Fragment() {
                }
                 else{
                    findNavController().navigate(R.id.action_splash_to_logIn)
-               }
+                   }
             }
 
         }

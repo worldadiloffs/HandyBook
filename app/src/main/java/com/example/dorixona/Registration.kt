@@ -46,21 +46,33 @@ class Registration : Fragment() {
         }
         val bundle = Bundle()
         binding.button.setOnClickListener {
-            if (binding.ism.text.isNullOrEmpty() &&
-                binding.familiya.text.isNullOrEmpty() &&
-                binding.email.text.isNullOrEmpty() &&
-                binding.parol.text.isNullOrEmpty() &&
-                binding.parolRe.text.isNullOrEmpty()){
-                Toast.makeText(requireContext(), "Iltimos barcha bo'shliqlarni to'ldiring!", Toast.LENGTH_SHORT).show()
-            }
-            if (binding.parol.text!!.equals(binding.parolRe.text)){
-                Toast.makeText(requireContext(), "Parolni qayta kirgazing!", Toast.LENGTH_SHORT).show()
-            }
-            else{
-                user = User(binding.ism.text.toString(), binding.familiya.text.toString(), binding.email.text.toString(), binding.parol.text.toString())
-                shPHelper.setUser(user)
-                bundle.putSerializable("user", user)
-                findNavController().navigate(R.id.action_registration2_to_main, bundle)
+            if (!binding.ism.text.isNullOrEmpty() &&
+                !binding.familiya.text.isNullOrEmpty() &&
+                !binding.email.text.isNullOrEmpty() &&
+                !binding.parol.text.isNullOrEmpty() &&
+                !binding.parolRe.text.isNullOrEmpty()
+            ) {
+                if (!binding.parol.text.toString().equals(binding.parolRe.text.toString())) {
+                    Toast.makeText(requireContext(), "Parolni qayta kirgazing!", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    user = User(
+                        binding.ism.text.toString(),
+                        binding.familiya.text.toString(),
+                        binding.email.text.toString(),
+                        binding.parol.text.toString()
+                    )
+                    shPHelper.setUser(user)
+                    bundle.putSerializable("user", user)
+                    findNavController().navigate(R.id.action_registration2_to_main, bundle)
+                }
+
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Iltimos barcha bo'shliqlarni to'ldiring!",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
         return binding.root
