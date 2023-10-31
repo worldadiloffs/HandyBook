@@ -54,4 +54,9 @@ dependencies {
 
     //gson
     implementation ("com.google.code.gson:gson:2.8.7")
+
+
+
+    // pdf
+    implementation("com.github.mhiew:android-pdf-viewer:3.2.0-beta.1")
 }

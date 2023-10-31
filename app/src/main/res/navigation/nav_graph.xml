@@ -83,10 +83,19 @@
         android:id="@+id/moreFragment"
         android:name="com.example.dorixona.Type.MoreFragment"
         android:label="fragment_more"
-        tools:layout="@layout/fragment_more" />
+        tools:layout="@layout/fragment_more" >
+        <action
+            android:id="@+id/action_moreFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/personalFragment"
         android:name="com.example.dorixona.Type.PersonalFragment"
         android:label="fragment_personal"
         tools:layout="@layout/fragment_personal" />
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.example.dorixona.CommentFragment"
+        android:label="fragment_comment"
+        tools:layout="@layout/fragment_comment" />
 </navigation>

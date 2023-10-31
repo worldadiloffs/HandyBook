@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.NestedScrollView
+import androidx.navigation.fragment.findNavController
 import com.example.dorixona.R
 import com.example.dorixona.databinding.FragmentMoreBinding
 import com.example.dorixona.model.Books
@@ -53,6 +54,7 @@ class MoreFragment : Fragment() {
         binding.name.text = item.name
         binding.author.text = item.author
         binding.back.setOnClickListener {
+
             requireActivity().onBackPressed()
         }
         binding.nestedScrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY -> // the delay of the extension of the FAB is set for 12 items    if (scrollY > oldScrollY + 12 && binding.floatingActionButton.isShown) {
@@ -70,7 +72,7 @@ class MoreFragment : Fragment() {
             }
         })
         binding.floatingActionButton.setOnClickListener {
-
+            findNavController().navigate(R.id.action_moreFragment_to_commentFragment)
         }
         binding.saved.setOnClickListener {
             if (!books.contains(item)) {
